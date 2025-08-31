@@ -76,6 +76,17 @@ async function main() {
       return;
     }
 
+    // 조회 기간이 두 달을 초과하는지 확인
+    const twoMonthsLater = new Date(startDate);
+    twoMonthsLater.setMonth(twoMonthsLater.getMonth() + 2);
+
+    if (endDate > twoMonthsLater) {
+      console.error(
+        '조회 기간은 최대 두 달을 넘을 수 없습니다. 토큰 사용량이 너무 많아질 수 있습니다.'
+      );
+      return;
+    }
+
     console.log('\n==== 기간 내 커밋 조회 중... ====');
 
     // 기간 내 커밋 목록 조회
