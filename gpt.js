@@ -3,7 +3,7 @@ require('dotenv').config();
 /**
  * OpenAI GPT 연동 모듈
  * - 환경변수 OPENAI_API_KEY 필요
- * - 환경변수 OPENAI_MODEL(선택): 기본값 'gpt-4o-mini'
+ * - 환경변수 OPENAI_MODEL(선택): 기본값 'gpt-4.1-mini'
  *
  * 사용 예시:
  *  const { generateMessage } = require('./gpt');
@@ -17,7 +17,7 @@ require('dotenv').config();
 const OpenAI = require('openai');
 
 // 기본 모델은 환경변수에서 가져오고, 없으면 경량 모델을 사용
-const DEFAULT_MODEL = process.env.OPENAI_MODEL || 'gpt-4o-mini';
+const DEFAULT_MODEL = process.env.OPENAI_MODEL || 'gpt-4.1-mini';
 
 // OpenAI 클라이언트 인스턴스 생성
 // 주의: API 키는 소스코드에 하드코딩하지 않고 환경변수로 주입한다.
