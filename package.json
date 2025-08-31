@@ -1,0 +1,17 @@
+{
+  "name": "commit-message-reporter",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "inquirer": "^12.9.4",
+    "openai": "^5.16.0",
+    "simple-git": "^3.28.0"
+  }
+}
