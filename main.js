@@ -50,6 +50,10 @@ async function main() {
         return true;
       },
     },
+    {
+      name: 'author',
+      message: '작성자 이름을 입력하세요 (선택 사항, 전체는 비워두세요):',
+    },
   ]);
 
   const git = simpleGit(answers.gitPath);
@@ -59,6 +63,9 @@ async function main() {
     console.log(`경로: ${answers.gitPath}`);
     console.log(`시작 날짜: ${answers.startDate}`);
     console.log(`종료 날짜: ${answers.endDate}`);
+    if (answers.author) {
+      console.log(`작성자: ${answers.author}`);
+    }
 
     // 날짜 유효성 검증
     const startDate = new Date(answers.startDate);
@@ -72,7 +79,7 @@ async function main() {
     console.log('\n==== 기간 내 커밋 조회 중... ====');
 
     // 기간 내 커밋 목록 조회
-    const commits = await git.log({
+    const logOptions = {
       '--since': answers.startDate,
       '--until': answers.endDate,
       format: {
@@ -82,7 +89,13 @@ async function main() {
         author_name: '%an',
         author_email: '%ae',
       },
-    });
+    };
+
+    if (answers.author) {
+      logOptions['--author'] = answers.author;
+    }
+
+    const commits = await git.log(logOptions);
 
     if (!commits.all || commits.all.length === 0) {
       console.log('지정된 기간에 커밋이 없습니다.');
