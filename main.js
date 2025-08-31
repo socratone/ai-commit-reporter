@@ -119,7 +119,7 @@ async function main() {
           // 각 커밋의 상세 정보 조회
           const showResult = await git.show([
             '--quiet',
-            '--pretty=fuller',
+            '--pretty=format:%B', // 커밋 메시지만 표시
             '--patch',
             '--stat',
             commit.hash,
