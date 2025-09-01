@@ -92,7 +92,8 @@ async function main() {
     // 기간 내 커밋 목록 조회
     const logOptions = {
       '--since': answers.startDate,
-      '--until': answers.endDate,
+      // endDate의 마지막 시간까지 포함하도록 T23:59:59 추가
+      '--until': `${answers.endDate}T23:59:59`,
       format: {
         hash: '%H',
         date: '%ai',
