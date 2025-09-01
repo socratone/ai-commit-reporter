@@ -161,7 +161,7 @@ async function main() {
           dailyReport += `**시간**: ${commit.date}\n`;
           dailyReport += `**메시지**: ${commit.message}\n\n`;
           dailyReport += `### AI 요약\n${aiSummary}\n\n`;
-          dailyReport += `### 상세 변경사항\n\`\`\`\n${showResult}\n\`\`\`\n\n`;
+          // dailyReport += `### 상세 변경사항\n\`\`\`\n${showResult}\n\`\`\`\n\n`;
           dailyReport += '---\n\n';
         } catch (commitErr) {
           console.error(`커밋 ${commit.hash} 처리 중 오류:`, commitErr);
